@@ -11,11 +11,32 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        stack=[]
+                
+        self.ctr=0
         def inorder(root):
             if(root):
-                inorder(root.left)
-                stack.append(root.val)
-                inorder(root.right)
-        inorder(root)
-        return(stack[k-1])
+                a=inorder(root.left)
+                if(a!=None):
+                    return(a)
+                self.ctr+=1
+                if(self.ctr==k):
+                    return(root.val)
+                b=inorder(root.right)
+                if(b!=None):
+                    return(b)
+            else:
+                return(None)
+        return(inorder(root))        
+                
+                
+                
+        # method 1
+        
+        # stack=[]
+        # def inorder(root):
+        #     if(root):
+        #         inorder(root.left)
+        #         stack.append(root.val)
+        #         inorder(root.right)
+        # inorder(root)
+        # return(stack[k-1])
