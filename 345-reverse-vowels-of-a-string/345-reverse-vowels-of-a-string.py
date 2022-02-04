@@ -4,6 +4,9 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        
+        
+        # method 1
         pos=[]
         s=list(s)
         vowel={"a","e","i","o","u","A","E","I","O","U"}
