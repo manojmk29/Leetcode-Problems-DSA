@@ -5,6 +5,9 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
+        
+        #method 1
+        
         for i in range(len(nums1)):
             x=nums1[i]
             flag=0
