@@ -11,22 +11,39 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-                
-        self.ctr=0
+        self.cnt=0
         def inorder(root):
             if(root):
-                a=inorder(root.left)
-                if(a!=None):
-                    return(a)
-                self.ctr+=1
-                if(self.ctr==k):
+                left=inorder(root.left)
+                if(left!=None):
+                    return(left)
+                self.cnt+=1
+                if(self.cnt==k):
                     return(root.val)
-                b=inorder(root.right)
-                if(b!=None):
-                    return(b)
+                right=inorder(root.right)
+                if(right!=None):
+                    return(right)
             else:
                 return(None)
-        return(inorder(root))        
+        return(inorder(root))
+            
+            
+            
+#         self.ctr=0
+#         def inorder(root):
+#             if(root):
+#                 a=inorder(root.left)
+#                 if(a!=None):
+#                     return(a)
+#                 self.ctr+=1
+#                 if(self.ctr==k):
+#                     return(root.val)
+#                 b=inorder(root.right)
+#                 if(b!=None):
+#                     return(b)
+#             else:
+#                 return(None)
+#         return(inorder(root))        
                 
                 
                 
