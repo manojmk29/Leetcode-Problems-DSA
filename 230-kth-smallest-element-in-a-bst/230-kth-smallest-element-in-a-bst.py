@@ -23,6 +23,8 @@ class Solution(object):
                 right=inorder(root.right)
                 if(right!=None):
                     return(right)
+                else:
+                    return(None)
             else:
                 return(None)
         return(inorder(root))
