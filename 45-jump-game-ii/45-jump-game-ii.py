@@ -4,19 +4,36 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+#         [2,3,1,1,4]
         n=len(nums)
-        dp=[-1 for i in range(n)]
-        dp[-1]=0
-        for i in range(n-2,-1,-1):
-            t=float("inf")
-            for j in range(i+nums[i],i,-1):
-                if(j>=n-1):
-                    v=0
-                else:
-                    v=dp[j]
-                t=min(t,v+1)
-            dp[i]=t
-        return(dp[0])
+        if(n==1):
+            return(0)
+        l=0
+        r=nums[0]
+        mxt=r
+        cnt=1
+        for i in range(1,n):
+            if(i>r):
+                l=i
+                r=mxt
+                cnt+=1
+            mxt=max(mxt,nums[i]+i)
+        return(cnt)
+        
+        
+        # n=len(nums)
+        # dp=[-1 for i in range(n)]
+        # dp[-1]=0
+        # for i in range(n-2,-1,-1):
+        #     t=float("inf")
+        #     for j in range(i+nums[i],i,-1):
+        #         if(j>=n-1):
+        #             v=0
+        #         else:
+        #             v=dp[j]
+        #         t=min(t,v+1)
+        #     dp[i]=t
+        # return(dp[0])
                 
         
         # n=len(nums)
