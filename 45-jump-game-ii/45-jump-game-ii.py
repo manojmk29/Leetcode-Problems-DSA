@@ -6,13 +6,11 @@ class Solution(object):
         """
 #         [2,3,1,1,4]
         n=len(nums)
-        if(n==1):
-            return(0)
         l=0
-        r=nums[0]
-        mxt=r
-        cnt=1
-        for i in range(1,n):
+        r=0
+        mxt=0
+        cnt=0
+        for i in range(0,n):
             if(i>r):
                 l=i
                 r=mxt
