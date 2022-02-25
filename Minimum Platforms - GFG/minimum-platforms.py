@@ -11,7 +11,7 @@ class Solution:
     	j=0
     	ret=1
     	cnt=0
-    	while(i<len(arr) and j<len(dep)):
+    	while(i<len(arr)):
     	    if(arr[i]<=dep[j]):
     	        i+=1
     	        cnt+=1
@@ -20,6 +20,8 @@ class Solution:
     	        cnt-=1
     	    ret=max(ret,cnt)
     	return(ret)
+    	#0900, 0940, 0950, 1100, 1500, 1800
+    	#0910, 1120, 1130,1200, 1900, 2000
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
