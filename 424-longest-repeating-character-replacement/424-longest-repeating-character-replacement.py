@@ -13,7 +13,7 @@ class Solution(object):
         for end,j in enumerate(s):
             hmap[j]+=1
             mct=max(hmap[j],mct)
-            while(end-start+1-mct>k):
+            if(end-start+1-mct>k):
                 hmap[s[start]]-=1
                 start+=1
             l=end-start+1
