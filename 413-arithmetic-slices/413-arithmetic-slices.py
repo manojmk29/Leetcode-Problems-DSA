@@ -1,6 +1,6 @@
 class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
-        @cache
+        @lru_cache
         def count(n):
             if cnt < 3: return 0
             return n - 2 + count(n - 1)
