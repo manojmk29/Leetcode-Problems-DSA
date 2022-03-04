@@ -9,9 +9,11 @@ class Solution(object):
             diff = nums[i-1] - nums[i]
             if diff == prev:
                 cnt += 1
-                if(cnt>=3):
-                    ans+=(cnt-2)
             else:
+                if(cnt>=3):
+                    ans+=((cnt-1)*(cnt-2))//2
                 cnt = 2
             prev = diff
+        if(cnt>=3):
+            ans+=(((cnt-1)*(cnt-2))//2)
         return(ans)
