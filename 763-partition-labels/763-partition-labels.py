@@ -8,16 +8,12 @@ class Solution(object):
         for i,j in enumerate(s):
             hmap[j]=i
         ret=[]
-        l=r=None
+        l=r=0
         for ind,val in enumerate(s):
-            if(l==None):
-                l=ind
-                r=hmap[val]
+            r=max(r,hmap[val])
             if(ind==r):
                 le=r-l+1
                 ret.append(le)
-                l=None
-            elif(hmap[val]>r):
-                r=hmap[val]
+                l=r+1
         return(ret)
                 
