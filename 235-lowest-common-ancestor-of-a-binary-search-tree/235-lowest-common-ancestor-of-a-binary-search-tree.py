@@ -13,15 +13,13 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        def helper(root):
-            if(not root):
-                return(False)
-            if(root==p or root==q):
+        pv=p.val
+        qv=q.val
+        while(root):
+            rv=root.val
+            if((pv<=rv and qv>=rv) or(pv>=rv and qv<=rv)):
                 return(root)
-            l=helper(root.left)
-            r=helper(root.right)
-            if(l and r):
-                return(root)
+            if(pv>rv):
+                root=root.right
             else:
-                return(l or r)
-        return(helper(root))
+                root=root.left
