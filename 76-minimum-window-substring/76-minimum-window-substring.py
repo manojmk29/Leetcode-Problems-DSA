@@ -27,6 +27,4 @@ class Solution(object):
                     have-=1
                 l+=1
         l,r=ret
-        return(s[l:r+1] if(mint!=float("inf")) else "")
-                    
-                
+        return(s[l:r+1] if(mint!=float("inf")) else "")            
