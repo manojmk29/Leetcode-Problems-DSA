@@ -4,15 +4,20 @@ class Solution:
     def solve(self, arr, n):
         # code here
         arr.sort()
-        a=b=""
-        f=-1
+        a=0
+        b=0
+        f=1
         for i in arr:
-            if(f==-1):
-                a+=str(i)
+            if(f==1):
+                a*=10
+                a+=i
             else:
-                b+=str(i)
+                b*=10
+                b+=i
             f*=-1
-        return((int(a) if a else 0)+ (int(b) if b else 0))
+        return(a+b)
+        
+        
         
         
 #{ 
