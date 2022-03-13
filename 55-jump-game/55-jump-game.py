@@ -4,12 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        tgt=len(nums)-1
-        temp=nums[0]
-        for i in range(tgt):
-            if(temp<i):
+        maxt=nums[0]
+        le=len(nums)-1
+        for i in range(len(nums)):
+            if(maxt<i):
                 return(False)
-            temp=max(temp,i+nums[i])
-            if(temp>=tgt):
+            maxt=max(maxt,i+nums[i])
+            if(maxt>=le):
                 return(True)
-        return(temp>=tgt)
