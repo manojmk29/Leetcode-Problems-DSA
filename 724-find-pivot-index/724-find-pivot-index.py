@@ -4,16 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        first=[0]
-        for i in range(len(nums)-1):
-            first.append(first[-1]+nums[i])
-        second=[0]
-        for i in range(len(nums)-1,0,-1):
-            second.append(second[-1]+nums[i])
-        second=second[::-1]
-        for i in range(len(nums)):
-            if(first[i]==second[i]):
+        tot=sum(nums)
+        cur=0
+        for i,j in enumerate(nums):
+            if(cur==tot-j-cur):
                 return(i)
+            cur+=j
         return(-1)
-        
-            
