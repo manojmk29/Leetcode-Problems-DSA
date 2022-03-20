@@ -5,15 +5,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        hset=set()
-        rset=set()
+        hset=collections.Counter(nums)
         ret=0
-        for i in nums:
-            if i-k in hset and i-k not in rset:
+        for i in hset:
+            if (k>0 and i+k in hset) or (k==0 and hset[i]>1):
                 ret+=1
-                rset.add(i-k)
-            if i+k in hset and i not in rset:
-                ret+=1
-                rset.add(i)
-            hset.add(i)
         return(ret)
