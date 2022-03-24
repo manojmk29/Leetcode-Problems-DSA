@@ -1,4 +1,4 @@
-from functools import lru_cache
+# from functools import lru_cache
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         tot=sum(nums)
