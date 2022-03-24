@@ -1,4 +1,3 @@
-# from functools import lru_cache
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         tot=sum(nums)
@@ -6,12 +5,14 @@ class Solution:
         if(tot%2!=0):
             return(False)
         need=tot//2
-        @cache
+        dp={}
         def helper(ind,a):
             if(a==need):
                 return(True)
             if(a>need or ind>=n):
                 return(False)
-            return(helper(ind+1,a+nums[ind]) or helper(ind+1,a))
+            if(a not in dp):
+                dp[a]=helper(ind+1,a+nums[ind]) or helper(ind+1,a)
+            return(dp[a])
         return(helper(0,0))            
         
