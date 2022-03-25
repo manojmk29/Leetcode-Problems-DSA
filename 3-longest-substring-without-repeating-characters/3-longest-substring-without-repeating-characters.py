@@ -7,7 +7,6 @@ class Solution(object):
         if(not s):
             return(0)
         ret=1
-        cnt=0
         hset=set()
         left=0
         for i in range(0,len(s)):
