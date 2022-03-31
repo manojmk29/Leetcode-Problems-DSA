@@ -1,18 +1,16 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        wordDict=set(wordDict)
-        hmap={}
-        def helper(word):
-            if word in hmap:
-                return(hmap[word])
-            if(len(word)==0):
-                hmap[word]=True
+        wd=set(wordDict)
+        mem={}
+        def helper(pos):
+            if(pos==len(s)):
                 return(True)
-            for i in range(len(word),0,-1):
-                if((word[0:i] in wordDict) and (helper(word[i:]) == True ) ):
-                    hmap[word]=True
+            if pos in mem:
+                return(mem[pos])
+            for i in range(pos,len(s)):
+                if(s[pos:i+1] in wd and helper(i+1)):
+                    mem[pos]=True
                     return(True)
-            hmap[word]=False
+            mem[pos]=False
             return(False)
-        return(helper(s))
-        
+        return(helper(0))
