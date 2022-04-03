@@ -4,8 +4,8 @@ class Solution:
     def knapSack(self,W, wt, val, n):
         @lru_cache(None)
         def helper(ind,w):
-            # if(w==0):
-            #     return(0)
+            if(w==0):
+                return(0)
             if(ind==0):
                 if(wt[0]<=w):
                     return(val[0])
