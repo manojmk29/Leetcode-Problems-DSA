@@ -1,6 +1,6 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        @cache
+        @lru_cache(None)
         def helper(tot):
             if(tot==0):
                 return(0)
