@@ -2,25 +2,21 @@
 Here we are using memo technique.
 
 """
-from functools import lru_cache
 class Solution:
     def change(self, amount: int, coins) -> int:
-        dp=[[-1 for i in range(amount+1)]for _ in range(len(coins))]
-        @lru_cache(None)
-        def helper(ind,tot):
-            if(ind==0):
-                if(tot%coins[0]==0):
-                    return(1)
-                else:
-                    return(0)
-            if(dp[ind][tot]!=-1):
-                return(dp[ind][tot])
-            notake=helper(ind-1,tot)
-            take=0
-            if(coins[ind]<=tot):
-                take=helper(ind,tot-coins[ind])
-            ret=notake+take
-            dp[ind][tot]=ret
-            return(ret)
-        val=helper(len(coins)-1,amount)
+        n=len(coins)
+        dp=[[0 for i in range(amount+1)]for _ in range(n)]
+        for i in range(0,amount+1):
+            if(i%coins[0]==0):
+                dp[0][i]=1
+            else:
+                dp[0][i]=0
+        for ind in range(1,len(coins)):
+            for val in range(0,amount+1):
+                notake=dp[ind-1][val]
+                take=0
+                if(coins[ind]<=val):
+                    take=dp[ind][val-coins[ind]]
+                dp[ind][val]=take+notake
+        val=dp[n-1][amount]
         return(val)
