@@ -8,7 +8,7 @@ class Solution:
             if(text1[ai]==text2[bi]):
                 ret=1
                 if(ai+1<=m-1 and bi+1<=n-1):
-                    ret+=+helper(ai+1,bi+1)
+                    ret+=helper(ai+1,bi+1)
             else:
                 if(ai+1<=m-1):
                     left=helper(ai+1,bi)
