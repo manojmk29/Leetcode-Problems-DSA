@@ -2,19 +2,23 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         m=len(text1)
         n=len(text2)
-        @lru_cache(None)
+        dp=[[-1 for i in range(n)]for i in range(m)]
         def helper(a,b):
             ret=left=right=0
+            if(dp[a][b]!=-1):
+                return(dp[a][b])
             if(text1[a]==text2[b]):
                 ret=1
                 if(a-1>=0 and b-1>=0):
                     ret+=helper(a-1,b-1)
+                    dp[a][b]=ret
                 return(ret)
             if(a-1>=0):
                 left=helper(a-1,b)
             if(b-1>=0):
                 right=helper(a,b-1)
             val=max(left,right)
+            dp[a][b]=val
             return(val)
         return(helper(m-1,n-1))
             
