@@ -1,15 +1,17 @@
 class Solution:
-    def minOperations(self, boxes: str) -> List[int]:
-        ret=[]
+    def minOperations(self, boxes: str):
         n=len(boxes)
+        ret=[0 for i in range(n)]
+        one=0
+        val=0
         for i in range(n):
-            if(boxes[i]=="1"):
-                ret.append(i)
-        ar=[]
-        for i in range(n):
-            val=0
-            for j in ret:
-                val+=abs(i-j)
-            ar.append(val)
-        return(ar)
-        
+            val+=one
+            ret[i]=val
+            one+=(boxes[i]=="1")
+        one=0
+        val=0
+        for i in range(n-1,-1,-1):
+            val+=one
+            ret[i]+=val
+            one+=(boxes[i]=="1")
+        return(ret)
