@@ -8,23 +8,23 @@ class Solution:
         # hmap=collections.defaultdict(list)
         r=len(M)
         c=len(M[0])
-        arr=[]
-        for i in range(r):
-            flag=1
-            for j in range(c):
-                if(M[i][j]==1):
-                    flag=0
-            if(flag==1):
-                arr.append(i)
-        j=-1
-        for i in range(r):
-            flag=1
-            for j in arr:
-                if(i!=j and M[i][j]==0):
-                    flag=0
-            if(flag==1):
-                return(j)
-        return(-1)
+        st=0
+        end=r-1
+        cand=-1
+        while(st<end):
+            if(M[end][st]):
+                end-=1
+            else:
+                st+=1
+        cand=st
+        if(cand==-1):
+            return(-1)
+        for i in range(c):
+            if(i!=cand):
+                if(M[cand][i] or M[i][cand]==0):
+                    return(-1)
+        return(cand)
+        
         
                 
 
