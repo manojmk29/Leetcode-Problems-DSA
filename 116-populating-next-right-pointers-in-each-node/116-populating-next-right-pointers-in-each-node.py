@@ -1,13 +1,16 @@
 from collections import deque
 class Solution:
     def connect(self, root):
-        def helper(node):
-            if(node):
-                if(node.left):
-                    node.left.next=node.right
-                    if(node.next):
-                        node.right.next=node.next.left
-                helper(node.left)
-                helper(node.right)
-            return(node)
-        return(helper(root))
+        head=root
+        while(root):
+            cur,root=root,root.left
+            while(cur):
+                if(cur.left):
+                    cur.left.next=cur.right
+                    if(cur.next):
+                        cur.right.next=cur.next.left
+                else:
+                    break
+                cur=cur.next
+        return(head)
+        
