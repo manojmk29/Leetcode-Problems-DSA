@@ -1,5 +1,4 @@
-#User function Template for python3
-
+from heapq import heapify,heappop,heappush
 class Solution:
     def kthSmallest(self,arr, l, r, k):
         '''
@@ -8,8 +7,12 @@ class Solution:
         r : ending index of the array i.e size-1
         k : find kth smallest element and return using this function
         '''
-        arr.sort()
-        return(arr[k-1])
+        heapify(arr)
+        k-=1
+        while(k):
+            heappop(arr)
+            k-=1
+        return(arr[0])
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
