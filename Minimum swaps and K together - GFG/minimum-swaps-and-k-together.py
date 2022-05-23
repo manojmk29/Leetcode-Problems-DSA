@@ -2,17 +2,25 @@
 
 def minSwap (arr, n, k) : 
     #Complete the function
-    temp=[0]
     cur=0
     for i in arr:
         if i <=k:
             cur+=1
-        temp.append(cur)
-    end=n-cur
     ret=cur
-    for i in range(end+1):
-        val=temp[i+cur]-temp[i]
-        val=cur-val
+    temp=0
+    l=0
+    for i in range(cur):
+        if arr[i] <=k:
+            temp+=1
+    val=cur-temp
+    ret=min(ret,val)
+    for i in range(cur,n):
+        if(arr[l]<=k):
+            temp-=1
+        l+=1
+        if(arr[i]<=k):
+            temp+=1
+        val=cur-temp
         ret=min(ret,val)
     return(ret)
         
