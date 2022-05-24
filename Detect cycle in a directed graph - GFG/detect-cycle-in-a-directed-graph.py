@@ -10,7 +10,7 @@ class Solution:
         visited=[0 for i in range(V)]
         def dfs(node):
             if(visited[node]):
-                return(check[node]==1)
+                return(False)
             check[node]=True
             visited[node]=True
             for i in adj[node]:
