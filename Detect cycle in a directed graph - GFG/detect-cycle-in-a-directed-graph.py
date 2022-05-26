@@ -2,29 +2,26 @@
 
 
 class Solution:
-    
-    #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
-        # code here
-        check=[0 for i in range(V)]
-        visited=[0 for i in range(V)]
-        def dfs(node):
-            if(visited[node]):
-                return(False)
-            check[node]=True
-            visited[node]=True
-            for i in adj[node]:
-                if(check[i]):
-                    return(True)
-                if(dfs(i)):
-                    return(True)
-            check[node]=False
-            return(False)
+        from collections import deque
+        indegree=[0 for i in range(V)]
+        for i in adj:
+            for j in i:
+                indegree[j]+=1
+        que=deque([])
+        ret=[]
         for i in range(V):
-            if(not visited[i]):
-                if(dfs(i)):
-                    return True
-        return False
+            if(indegree[i]==0):
+                que.append(i)
+        cnt=0
+        while(que):
+            popped=que.popleft()
+            cnt+=1
+            for i in adj[popped]:
+                indegree[i]-=1
+                if(indegree[i]==0):
+                    que.append(i)
+        return(cnt!=V)       
             
 
 #{ 
