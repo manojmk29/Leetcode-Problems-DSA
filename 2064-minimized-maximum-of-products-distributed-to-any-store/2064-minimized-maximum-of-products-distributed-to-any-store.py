@@ -14,6 +14,5 @@ class Solution:
             if(c>n):
                 l=mid+1
             else:
-                ret=mid
                 r=mid
         return(l)       
