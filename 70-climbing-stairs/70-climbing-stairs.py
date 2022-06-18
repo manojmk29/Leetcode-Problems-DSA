@@ -1,12 +1,10 @@
-class Solution(object):
-    def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        l=1
-        r=1
-        for i in range(1,n):
-            l,r=r,l+r
-        return(r)
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        dp=collections.defaultdict(int)
+        dp[1]=1
+        dp[2]=2
+        for i in range(3,n+1):
+            dp[i]+=dp[i-2]
+            dp[i]+=dp[i-1]
+        return(dp[n])
         
