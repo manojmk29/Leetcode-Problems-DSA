@@ -1,19 +1,15 @@
 class Solution:
     def maxProfit(self, prices):
         n=len(prices)
-        mem=[-1 for i in range(n)]
-        def helper(pos):
-            if(pos>=n):
-                return(0)
-            if(mem[pos]!=-1):
-                return mem[pos]
-            val=0
-            for i in range(pos+1,n):
-                if(prices[i]>prices[pos]):
-                    val=max(val,prices[i]-prices[pos]+helper(i+2))
-            ret=max(helper(pos+1),val)
-            mem[pos]=ret
-            return(ret)
-        return(helper(0))
+        inh=-prices[0]
+        nos=0
+        sold=0
+        for i in range(1,n):
+            n_inh=max(inh,nos-prices[i])
+            n_nos=max(nos,sold)
+            n_sold=max(sold,inh+prices[i])
+            inh,nos,sold=n_inh,n_nos,n_sold
+        return(max(nos,sold))
+
                     
             
