@@ -12,7 +12,6 @@ class Solution:
                     heapq.heappush(arr,-mat[i][j])
                 else:
                     if(arr[0]<-mat[i][j]):
-                        heapq.heappop(arr)
-                        heapq.heappush(arr,-mat[i][j])
+                        heapq.heappushpop(arr,-mat[i][j])
         return(-arr[0])
         
