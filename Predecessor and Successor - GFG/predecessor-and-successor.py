@@ -11,20 +11,16 @@ class Node:
 # It sets pre and suc as predecessor and successor respectively
 class Solution:
     def findPreSuc(self, root, pre, suc, key):
-        pre.key = -float("inf")
-        suc.key = float("inf")
         def helper(node):
             if node:
                 val = node.key
-                if val < key:
-                    pre.key = max(pre.key, val)
-                if val > key:
-                    suc.key = min(suc.key, val)
+                if (val < key) and (not pre.key or pre.key < val):
+                    pre.key = val
+                if (val > key) and (not suc.key or suc.key > val):
+                    suc.key = val
                 helper(node.left)
                 helper(node.right)
         helper(root)
-        pre.key = None if pre.key == -float("inf") else pre.key
-        suc.key = None if suc.key == float("inf") else suc.key
 
 #{ 
  # Driver Code Starts
