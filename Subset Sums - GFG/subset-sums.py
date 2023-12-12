@@ -1,17 +1,17 @@
 #User function Template for python3
 class Solution:
 	def subsetSums(self, arr, N):
-	    ret = []
-	    def helper(ind,temp):
-	        if ind==N:
-	            ret.append(temp)
+	    ret=[]
+	    n=len(arr)
+	    def helper(ind,cur):
+	        if(ind==n):
+	            ret.append(cur)
 	            return
-	        helper(ind+1,temp+arr[ind])
-	        helper(ind+1,temp)
+	        helper(ind+1,cur)
+	        helper(ind+1,cur+arr[ind])
 	    helper(0,0)
 	    return ret
 	        
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
