@@ -1,5 +1,5 @@
 # Subset Sums
-## Medium
+## Easy
 <div class="problems_problem_content__Xm_eO"><div class="entry-content">
 <p><span style="font-size: 18px;">Given a&nbsp;list <strong>arr</strong>&nbsp;of <strong>N</strong> integers, return sums of all subsets in it.</span></p>
 <p>&nbsp;</p>
